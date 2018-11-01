@@ -3,7 +3,7 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 exports.helloWorld = functions.https.onRequest((request, response) => {
-    response.send("Example data");
+    response.send("Hello, this is the server!");
 });
 
 exports.uppercaseDeviceName = functions.https.onCall((data) => {
@@ -15,16 +15,4 @@ exports.uppercaseDeviceName = functions.https.onCall((data) => {
     return {
         result: "Unknown"
     };
-});
-
-exports.getRowCount = functions.https.onRequest((req, res) => {
-    admin.firestore().collection("exampleTable").get().then(snapshot => {
-        return {
-            size: snap.size
-        };
-    }).catch(reason => {
-        return {
-            size: 0
-        };
-    })
 });
