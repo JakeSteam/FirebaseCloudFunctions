@@ -8,11 +8,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 
 exports.uppercaseDeviceName = functions.https.onCall((data) => {
     if (data.manufacturer.length > 0) {
-        return {
-            result: data.manufacturer.toUpperCase
-        };
+        return data.manufacturer.toUpperCase();
     }
-    return {
-        result: "Unknown"
-    };
+    return "Unknown";
 });
